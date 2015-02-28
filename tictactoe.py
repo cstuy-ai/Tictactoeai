@@ -87,8 +87,8 @@ while not boardfilled:
 	for g in winningcombos:
 		w = 0		
 		while w < len(g):	
-			##### -1 g w
-			if boardlist[g[w]] != s:
+			
+			if boardlist[g[w]-1] != s:
 				break
 			elif w == 2:
 				woncombo = True 
