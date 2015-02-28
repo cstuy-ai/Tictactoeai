@@ -25,9 +25,11 @@ ___|___|___
 gamewon = False
 boardlist = [1,2,3,4,5,6,7,8,9]
 boardfilled = False
-winningcombos = [[1,2,3] , [4,5,6] , [7,8,9] , [1,4.7] , [2,5,8] , [3,6,9] , [1,5,9] , [3,5,7]]
+winningcombos = [[1,2,3] , [4,5,6] , [7,8,9] , [1,4,7] , [2,5,8] , [3,6,9] , [1,5,9] , [3,5,7]]
+# ^ Winning combinations of cells
 print board%tuple(boardlist)
 player1 = True
+# ^ defines which "player" ie: x or o you are currently. Player1 being X and not player 1 being O.
 def spacefilled(index):
 	if boardlist[index] != "x" and boardlist[index] != "o":
 		return False
@@ -47,6 +49,7 @@ def replace(n, s):
 
 
 while not boardfilled:
+# |v| Sets your player and checks which (X or O) to replace with
 	player = "Player 1"
 	if player1:
 		s = "x"
@@ -75,17 +78,27 @@ while not boardfilled:
 	print boardfilled
 	if boardfilled:
 		print ("The game is over, the board has been filled")
-
- 
-
-
-
-
-
 	
-#   boardlist[0]
+ #winningcombos = [ [1,2,3] , [4,5,6] , [7,8,9] , [1,4,7] , [2,5,8] , [3,6,9] , [1,5,9] , [3,5,7]]
+	woncombo = False
+# ^ Whether your move has won ,  based on the check in the below For loop
+#winningcombos[0]
+	print winningcombos
+	for g in winningcombos:
+		w = 0		
+		while w < len(g):	
+			##### -1 g w
+			if boardlist[g[w]] != s:
+				break
+			elif w == 2:
+				woncombo = True 
+				break
+			w = w+1
+	if woncombo == True:
+		break
+print("The game has ended, hopefully you have enjoyed the game")
 
-#
+
   
 
 
