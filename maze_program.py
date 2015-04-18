@@ -59,63 +59,32 @@ def print_maze(maz): #takes a 2 dimensional array and prints it as strings
 		s= s[:-1] #takes out the last character, the extra new linw
 		print s
 
-
+# function for checking postions in maze
 def checkpos(m,r,c):
 	global gamewon
 	tempmaze = maze2
 	if gamewon:
 		return
-	if maze2[r][c] in "+-|":
+	if maze2[r][c] in "+-|": # Wall Case
 		return
-	if maze2[r][c] == '$':
+	if maze2[r][c] == '$': # Winning Case
 		gamewon = True
 		return
-	if tempmaze[r][c] == '#':
+	if tempmaze[r][c] == '#': # Visited Case
 		return
 	if tempmaze[r][c] == " ":
 		tempmaze[r][c] = '#'
 		print_maze(tempmaze)
 		time.sleep(0)
-		checkpos(tempmaze,r,c+1)
-		checkpos(tempmaze,r,c-1)
-		checkpos(tempmaze,r+1,c)
-		checkpos(tempmaze,r-1,c)
-		tempmaze[r][c]="."
+		checkpos(tempmaze,r,c+1) #Check up
+		checkpos(tempmaze,r,c-1) #Check down
+		checkpos(tempmaze,r+1,c) #check left
+		checkpos(tempmaze,r-1,c) #check right
+		tempmaze[r][c]="." # Replace w/ dot to mark "Bad positions" ie: leading to dead ends
 
 checkpos(maze2,1,1)
 
-	
 
 
-	
-	
-	
-'''
-for line in maze:
-	s = (line)
-
-for i in m:
-	a[x][y] = m[i]
-	x += 1
-	y += 1
-#if it reaches eof breaks out of loop
-while(s != None):
-	for c in s:
-		a[y][x] = c
-		x = 0
-		s = (line)
-'''
-
-'''
-
-st = "fjjklafsdfklasdfkjlsd"
-for char in st:
-	print char
-#Solving Function
-#def solve(x,y):
-	#if 
-
-
-'''
 
 	
